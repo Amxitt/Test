@@ -9,19 +9,21 @@ jobs:
   redeploy_everything:
     name: Deploying everything to dev cluster
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: SSH Into server
         run: |
-            echo ${{ secrets.SSH_PRIVATE_KEY }} &> ~/ssh_key
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/ssh_key
+          chmod 600 ~/ssh_key
 
-            ssh -i ~/ssh_key ubuntu@3.109.132.59 
+          ssh -o StrictHostKeyChecking=no -i ~/ssh_key ubuntu@3.109.132.59 << 'EOF'
             cd Test && git pull
 
             pnpm install
-            
+
             pnpm run build
 
             pm2 restart http-backend
             pm2 restart web
             pm2 restart ws-backend
+          EOF
