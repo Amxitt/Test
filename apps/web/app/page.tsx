@@ -8,7 +8,7 @@ export default async function Home() {
 
   return (
     <div>
-      Change is visible
+      Change is visible 2 for dev
       username: {user?.username}
       password: {user?.password}
     </div>
