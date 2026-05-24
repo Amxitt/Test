@@ -21,7 +21,7 @@ jobs:
                 source \$NVM_DIR/nvm.sh &&
                 
                 cd Test &&
-                git pull &&
+                git pull --rebase origin production &&
 
                 pnpm install &&
                 pnpm run build &&
