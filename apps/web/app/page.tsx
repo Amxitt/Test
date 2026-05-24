@@ -9,6 +9,9 @@ export default async function Home() {
   return (
     <div>
       Yes man You have done it.
+
+     Yes you have fuckin done it. learning the deployment in a solid manner. 
+
       username: {user?.username}
       password: {user?.password}
     </div>
