@@ -1,8 +1,9 @@
 name: Deploy to prod 
 
 on:
-    branch:
-        - production
+    push:
+        branches:
+            -production
 
 jobs:
     redeploy-everything:
@@ -11,19 +12,19 @@ jobs:
 
         steps:
             - name: SSH into Server
-                run: |
-                 echo "${{secrets.SSH_PRIVATE_KEY}}" > ~/ssh_key
-                 chmod 600 ~/ssh_key
+              run: |
+                echo "${{secrets.SSH_PRIVATE_KEY}}" > ~/ssh_key
+                chmod 600 ~/ssh_key
 
-                 ssh -t -o StrictHostKeyChecking=no -i ~/ssh_key ubuntu@35.154.24.126 "
-                   export NVM_DIR=\$HOME/.nvm &&
-                   source \$NVM_DIR/nvm.sh &&
-                   
-                   cd Test &&
-                   git pull &&
+                ssh -t -o StrictHostKeyChecking=no -i ~/ssh_key ubuntu@35.154.24.126 "
+                export NVM_DIR=\$HOME/.nvm &&
+                source \$NVM_DIR/nvm.sh &&
+                
+                cd Test &&
+                git pull &&
 
-                   pnpm install &&
-                   pnpm run build &&
+                pnpm install &&
+                pnpm run build &&
 
-                   pm2 restart all
-                   "
+                pm2 restart all
+                "
