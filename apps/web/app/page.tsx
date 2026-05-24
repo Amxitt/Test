@@ -8,9 +8,8 @@ export default async function Home() {
 
   return (
     <div>
-      Yes man You have done it.
-
-     Yes you have fuckin done it. learning the deployment in a solid manner. 
+    
+      <h1>  Welcome to dev Server</h1>
 
       username: {user?.username}
       password: {user?.password}
