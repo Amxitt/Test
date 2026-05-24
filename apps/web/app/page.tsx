@@ -8,7 +8,8 @@ export default async function Home() {
 
   return (
     <div>
-<h1>Welcome to prod server</h1> 
+<h1>Welcome to production server</h1> 
+<h1>I have created smooth ci-cd pipeline to automatically deploy my code.</h1>
 
       username: {user?.username}
       password: {user?.password}
