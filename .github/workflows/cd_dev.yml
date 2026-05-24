@@ -16,7 +16,7 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/ssh_key
           chmod 600 ~/ssh_key
 
-          ssh -tt -o StrictHostKeyChecking=no -i ~/ssh_key ubuntu@3.109.132.59 "
+          ssh -tt -o StrictHostKeyChecking=no -i ~/ssh_key ubuntu@15.206.80.178"
             export NVM_DIR=\$HOME/.nvm &&
             source \$NVM_DIR/nvm.sh &&
 
